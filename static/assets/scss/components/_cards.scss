@@ -14,9 +14,9 @@
   .card-title {
     color: $card-title-color;
     margin-bottom: 1.5rem;
-    text-transform: uppercase;
+//     text-transform: uppercase;
     font-size: .875rem;
-    font-weight: bold; 
+    font-weight: bold;
   }
   .card-subtitle {
     @extend .text-gray;
