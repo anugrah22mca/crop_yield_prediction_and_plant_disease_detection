@@ -1,2 +1,0 @@
-path/to/plant_leaf_classifier_vgg64i.h5 filter=lfs diff=lfs merge=lfs -text
-plant_leaf_classifier_vgg64i.h5 filter=lfs diff=lfs merge=lfs -text
