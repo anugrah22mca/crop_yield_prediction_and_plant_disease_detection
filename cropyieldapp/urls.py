@@ -13,7 +13,8 @@ urlpatterns = [
     path('farmerviewprofile/', farmerviews.farmerviewprofile, name='farmerviewprofile'),
     path('farmers_view/', farmerviews.view_farmers, name='farmers_view'),
     path('updatefarmer', farmerviews.updatefarmer, name='updatefarmer'),
-
+    path('home/', farmerviews.home, name='home'),
+    path('load_upload_page/', farmerviews.load_upload_page, name="load_upload_page"),
     path('officer_home/', officerviews.officer_home, name='officer_home'),
     path('officer_register/', officerviews.officer_register, name='officer_register'),
     path('view_officer/', officerviews.view_officer, name='view_officer'),

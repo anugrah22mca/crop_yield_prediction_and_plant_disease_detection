@@ -30,3 +30,6 @@ class Officer(models.Model):
 
     def __str__(self):
         return self.name
+
+class upload_img(models.Model):
+    img_upload=models.ImageField(upload_to='uploads')
