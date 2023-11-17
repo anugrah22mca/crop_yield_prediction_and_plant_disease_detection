@@ -1,9 +1,10 @@
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from .forms import FarmerRegister, LoginRegister, upload_form
-from .models import Farmer, upload_img
+from .forms import FarmerRegister, LoginRegister, upload_form ,ChatForm
+from .models import Farmer, upload_img ,Chat
 
 from .prediction import model_predict
 def home(request):
@@ -84,3 +85,25 @@ def load_upload_page(request):
 
 
     return render(request,'farmer/choose.html')
+
+
+def enquiry_add(request):
+    form = ChatForm()
+    u = request.user
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = u
+            obj.save()
+            messages.info(request, 'Complaint Registered Successfully')
+            return redirect('enquiry')
+    else:
+        form = ChatForm()
+    return render(request, 'farmer/enquiry.html', {'form': form})
+
+
+def enquiry_view(request):
+    chat = Chat.objects.all()
+    print(chat)
+    return render(request, 'farmer/enquiry_view.html', {'chat': chat})

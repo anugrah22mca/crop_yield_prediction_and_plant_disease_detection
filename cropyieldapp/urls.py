@@ -15,9 +15,15 @@ urlpatterns = [
     path('updatefarmer', farmerviews.updatefarmer, name='updatefarmer'),
     path('home/', farmerviews.home, name='home'),
     path('load_upload_page/', farmerviews.load_upload_page, name="load_upload_page"),
+    path('enquiry/', farmerviews.enquiry_add, name="enquiry"),
+    path('enquiry_view/', farmerviews.enquiry_view, name="enquiry_view"),
+
+
+
     path('officer_home/', officerviews.officer_home, name='officer_home'),
     path('officer_register/', officerviews.officer_register, name='officer_register'),
     path('view_officer/', officerviews.view_officer, name='view_officer'),
     path('remove_officer/<int:id>/', officerviews.remove_officer, name='remove_officer'),
+    path('enquiry_view_of/', officerviews.enquiry_view, name="enquiry_view"),
 
 ]

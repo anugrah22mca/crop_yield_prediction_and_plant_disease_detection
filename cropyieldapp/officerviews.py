@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import LoginRegister, OfficerRegister
-from .models import Officer, Login
+from .models import Officer, Login ,Feedback
 
 
 def officer_home(request):
@@ -44,3 +44,8 @@ def remove_officer(request, id):
         return redirect('view_officer')
     else:
         return redirect('view_officer')
+
+
+def enquiry_view(request):
+    f = Feedback.objects.all()
+    return render(request, 'officer/enquiry_view.html', {'feedback': f})

@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import Farmer, Login, Officer ,upload_img
+from .models import Farmer, Login, Officer ,upload_img ,Chat
 
 
 def phone_number_validator(value):
@@ -41,3 +41,9 @@ class upload_form(forms.ModelForm):
     class Meta:
         model=upload_img
         fields=['img_upload']
+
+
+class ChatForm(forms.ModelForm):
+    class Meta:
+        model = Chat
+        fields = ('desc',)
