@@ -8,6 +8,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
 
     path('admin_home/', adminviews.admin_home, name='admin_home'),
+    path('enquiry_view_ad/', adminviews.enquiry_view, name="enquiry_view_ad"),
+    path('view_announce_ad/', adminviews.view_announce, name='view_announce_ad'),
 
     path('farmer_register/', farmerviews.farmer_register, name='farmer_register'),
     path('farmerviewprofile/', farmerviews.farmerviewprofile, name='farmerviewprofile'),
@@ -17,7 +19,7 @@ urlpatterns = [
     path('load_upload_page/', farmerviews.load_upload_page, name="load_upload_page"),
     path('enquiry/', farmerviews.enquiry_add, name="enquiry"),
     path('enquiry_view/', farmerviews.enquiry_view, name="enquiry_view"),
-    path('view_announcecustomer/', farmerviews.view_announcecustomer, name="view_announcecustome"),
+    path('view_announcecustomer/', farmerviews.view_announcecustomer, name="view_announcecustomer"),
 
     path('officer_home/', officerviews.officer_home, name='officer_home'),
     path('officer_register/', officerviews.officer_register, name='officer_register'),

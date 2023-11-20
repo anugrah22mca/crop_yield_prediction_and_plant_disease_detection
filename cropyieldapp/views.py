@@ -16,14 +16,12 @@ def login_view(request):
             login(request, user)
             if user.is_staff:
                 return redirect('admin_home')
-            # elif user.is_nursery:
-            #     return redirect('worker_home')
             elif user.is_farmer:
                 return redirect('farmerviewprofile')
             elif user.is_officer:
                 return redirect('officer_home')
         else:
-            messages.info(request, 'Invalid Credentials')
+            return render(request, 'login.html', {'invalid_credentials': True})
     return render(request, 'login.html')
 
 

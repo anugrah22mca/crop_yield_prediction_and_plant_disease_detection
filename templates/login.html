@@ -56,6 +56,7 @@
           </div>
         </div>
       </div>
+
       <!-- content-wrapper ends -->
     </div>
     <!-- page-body-wrapper ends -->
@@ -69,6 +70,14 @@
   <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
   <script src="{% static 'assets/js/template.js' %}"></script>
   <!-- endinject -->
+{% if invalid_credentials %}
+  <script>
+    alert("Invalid username or password. Please try again.");
+  </script>
+{% endif %}
+
+<!-- Your other HTML content goes here -->
+
 </body>
 
 </html>
