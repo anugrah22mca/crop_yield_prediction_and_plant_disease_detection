@@ -18,7 +18,7 @@ labels= { 0: 'Apple black rot',
     5: 'Potato early blight'}
 
 ## loading the saved model
-model= load_model("plant_leaf_classifier_vgg64i.h5")
+model= load_model("diseaseDetects.h5")
 
 def model_predict(new_scr):
     img = load_img(str(new_scr), target_size=(224, 224))
