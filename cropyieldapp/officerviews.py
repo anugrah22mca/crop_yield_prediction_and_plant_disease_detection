@@ -2,8 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from .forms import LoginRegister, OfficerRegister
-from .models import Officer, Login ,Feedback
+from .forms import LoginRegister, OfficerRegister, Announcementform
+from .models import Officer, Login, Feedback, Announcement
 
 
 def officer_home(request):
@@ -49,3 +49,34 @@ def remove_officer(request, id):
 def enquiry_view(request):
     f = Feedback.objects.all()
     return render(request, 'officer/enquiry_view.html', {'feedback': f})
+
+
+def announce(request):
+    form = Announcementform()
+    if request.method == 'POST':
+        form = Announcementform(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = Officer.objects.get(user=request.user)
+            obj.save()
+            messages.info(request, 'Announcement added Successfully')
+            return redirect('view_announce')
+    return render(request,'officer/announce_add.html',{'form':form})
+
+
+def view_announce(request):
+    content=Announcement.objects.all()
+    return render(request,'officer/announce_view.html',{'content':content})
+
+
+def reply_enquiry(request, id):
+    f = Feedback.objects.get(id=id)
+    if request.method == 'POST':
+        r = request.POST.get('reply')
+        f.reply = r
+        f.save()
+        messages.info(request, 'Reply send for complaint')
+        return redirect('enquiry_view_of')
+    return render(request, 'officer/reply_enquiry.html', {'feedback': f})
+
+

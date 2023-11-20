@@ -1,32 +1,42 @@
 {% extends 'farmer/home.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<style>
-  .ash{
-  border:1px solid #adb5bd;
-  padding:25px;
-  border-radius: 0 15px 15px 15px;
-  width:600px;
-  }
-  .head{
-  padding:22px;
-  }
-</style>
-<div class="head" style="background-color:#ced4da; width:100%; text-align:center">
-    <h3>CHATS</h3>
-      </div>
-<div class="card">
-  <div class="card-body">
-
-
-{% for i in chat %}
-      <div class="ash mt-4" style="background-color:#adb5bd">
-    <h5>{{i.user}}</h5>
-    <p class="mt-3">{{i.desc}}</p>
-          </div>
-{% endfor %}
-
-
-  </div>
-</div>
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Enquiry View</h4>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th>SI No</th>
+<!--                            <th>Name</th>-->
+                            <th>Subject</th>
+                            <th>Enquiry</th>
+                            <th>Date</th>
+                            <th>Reply</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for f in feedback %}
+                      <tr>
+                          <td>{{forloop.counter}}</td>
+<!--                          <td>{{f.user}}</td>-->
+                          <td>{{f.subject}}</td>
+                          <td>{{f.Enquiry}}</td>
+                          <td>{{f.date}}</td>
+                          <td>{% if f.reply == None %}
+                              <p>No Reply Yet..</p>
+                              {% else %}
+                              {{f.reply}}
+                              {% endif %}
+                          </td>
+                      </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
 {% endblock %}

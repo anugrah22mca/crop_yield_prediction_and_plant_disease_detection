@@ -3,8 +3,9 @@ import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.forms import DateInput
 
-from .models import Farmer, Login, Officer ,upload_img ,Chat
+from .models import Farmer, Login, Officer, upload_img, Announcement, Feedback
 
 
 def phone_number_validator(value):
@@ -43,7 +44,18 @@ class upload_form(forms.ModelForm):
         fields=['img_upload']
 
 
-class ChatForm(forms.ModelForm):
+
+
+
+class Announcementform(forms.ModelForm):
     class Meta:
-        model = Chat
-        fields = ('desc',)
+        model=Announcement
+        fields=['content']
+
+class   FeedbackForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.widgets.DateInput(
+        attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'})
+    )
+    class Meta:
+        model = Feedback
+        fields = ('subject', 'Enquiry', 'date')

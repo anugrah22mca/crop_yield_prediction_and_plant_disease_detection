@@ -34,9 +34,7 @@ class Officer(models.Model):
 class upload_img(models.Model):
     img_upload=models.ImageField(upload_to='uploads')
 
-class Chat(models.Model):
-    user = models.ForeignKey(Login,on_delete=models.CASCADE,null=True)
-    desc = models.TextField()
+
 
 class Feedback(models.Model):
     user = models.ForeignKey(Login, on_delete=models.DO_NOTHING)
@@ -44,3 +42,7 @@ class Feedback(models.Model):
     Enquiry = models.TextField()
     date = models.DateField()
     reply = models.TextField(null=True, blank=True)
+
+class Announcement(models.Model):
+    user = models.ForeignKey(Officer, on_delete=models.CASCADE, related_name='announcement')
+    content = models.TextField(max_length=1000)
